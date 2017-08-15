@@ -1,0 +1,4 @@
+rootProject.name = 'amv-vertx'
+
+include 'amv-vertx-spring-boot-starter'
+
