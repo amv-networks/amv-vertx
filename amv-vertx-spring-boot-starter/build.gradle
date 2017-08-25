@@ -12,8 +12,7 @@ dependencies {
     compile "io.vertx:vertx-maven-service-factory:${vertxVersion}", optional
     compile "io.vertx:vertx-health-check:${vertxVersion}", optional
 
-    // TODO: all libs should be "compile" and "optional" in a seperate "auto-configure" module
-    compile "io.vertx:vertx-mqtt-server:${vertxVersion}"
+    compileOnly "io.vertx:vertx-mqtt:${vertxVersion}"
 
 
     compile "com.fasterxml.jackson.module:jackson-module-parameter-names:${jacksonVersion}", optional

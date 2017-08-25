@@ -2,7 +2,7 @@ import io.franzbecker.gradle.lombok.task.DelombokTask
 
 buildscript {
     ext {
-        vertxVersion = '3.4.2'
+        vertxVersion = '3.5.0-SNAPSHOT'
         jacksonVersion = '2.8.9'
     }
     repositories {
@@ -72,6 +72,9 @@ subprojects {
         mavenLocal()
         maven { url 'https://repo.spring.io/milestone' }
         maven { url 'https://repo.spring.io/libs-milestone' }
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
         jcenter()
     }
 

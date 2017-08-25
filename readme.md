@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/amvnetworks/amv-trafficsoft-datahub.svg?branch=master)](https://travis-ci.org/amvnetworks/amv-trafficsoft-datahub)
+[![Build Status](https://travis-ci.org/amvnetworks/amv-vertx.svg?branch=master)](https://travis-ci.org/amvnetworks/amv-vertx)
 
-amv-trafficsoft-datahub
+amv-vertx
 ========
 
 # build
@@ -8,11 +8,7 @@ amv-trafficsoft-datahub
 ./gradlew clean build
 ```
 
-# usage
-The [application.yml](src/main/resources/application.yml) acts as a 
-template for your own configuration parameter.
-
-## configuration
-Copy the contents of the `application.yml` file to `application-my-profile.yml`
-and start the application with `--spring.profiles.active=my-profile`.
-Or simply adapt the `application.yml` contents to your needs.
+###### publish SNAPSHOT to local maven repository
+```
+./gradlew clean build -Pminimal -Prelease.stage=SNAPSHOT -Prelease.scope=patch publishToMavenLocal
+```
