@@ -1,4 +1,4 @@
-package org.amv.spring.vertx;
+package org.amv.vertx.spring.metrics;
 
 import io.vertx.core.metrics.MetricsOptions;
 import io.vertx.core.spi.VertxMetricsFactory;

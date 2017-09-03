@@ -1,4 +1,4 @@
-package org.amv.spring.vertx;
+package org.amv.vertx.spring;
 
 import io.vertx.core.json.Json;
 import org.springframework.beans.factory.InitializingBean;

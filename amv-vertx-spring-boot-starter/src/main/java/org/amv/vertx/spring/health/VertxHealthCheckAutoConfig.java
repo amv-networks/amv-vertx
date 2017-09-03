@@ -1,8 +1,10 @@
-package org.amv.spring.vertx;
+package org.amv.vertx.spring.health;
 
 import io.vertx.core.Vertx;
 import io.vertx.ext.healthchecks.HealthChecks;
 import lombok.extern.slf4j.Slf4j;
+import org.amv.vertx.spring.VertxAutoConfig;
+import org.amv.vertx.spring.VertxRxAutoConfig;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

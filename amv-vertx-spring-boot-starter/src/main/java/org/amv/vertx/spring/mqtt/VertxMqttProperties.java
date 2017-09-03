@@ -1,8 +1,7 @@
-package org.amv.vertx.mqtt;
+package org.amv.vertx.spring.mqtt;
 
 
 import io.vertx.core.http.ClientAuth;
-import io.vertx.core.net.SSLEngineOptions;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

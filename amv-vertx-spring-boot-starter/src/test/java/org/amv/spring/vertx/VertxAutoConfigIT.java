@@ -3,6 +3,7 @@ package org.amv.spring.vertx;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Verticle;
 import io.vertx.rxjava.core.Vertx;
+import org.amv.vertx.spring.VertxProperties;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

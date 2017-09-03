@@ -1,6 +1,7 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-org.amv.spring.vertx.VertxRxAutoConfig,\
-org.amv.spring.vertx.VertxAutoConfig,\
-org.amv.spring.vertx.VertxHealthCheckAutoConfig,\
-org.amv.spring.vertx.VertxMetricsAutoConfig,\
-org.amv.vertx.mqtt.VertxMqttServerAutoConfig
+org.amv.vertx.spring.VertxRxAutoConfig,\
+org.amv.vertx.spring.VertxAutoConfig,\
+org.amv.vertx.spring.health.VertxHealthCheckAutoConfig,\
+org.amv.vertx.spring.metrics.VertxMetricsAutoConfig,\
+org.amv.vertx.spring.mqtt.VertxMqttServerAutoConfig,\
+org.amv.vertx.spring.eventbridge.EventBusBridgeAutoConfig

@@ -1,4 +1,4 @@
-package org.amv.vertx.mqtt;
+package org.amv.vertx.spring.mqtt;
 
 import io.vertx.mqtt.MqttServerOptions;
 import io.vertx.rxjava.core.Vertx;
