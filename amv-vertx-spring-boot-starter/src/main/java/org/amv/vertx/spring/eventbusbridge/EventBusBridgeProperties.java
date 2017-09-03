@@ -1,4 +1,4 @@
-package org.amv.vertx.spring.eventbridge;
+package org.amv.vertx.spring.eventbusbridge;
 
 
 import lombok.Data;

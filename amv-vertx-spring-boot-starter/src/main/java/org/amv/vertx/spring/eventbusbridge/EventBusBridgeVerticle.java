@@ -1,4 +1,4 @@
-package org.amv.vertx.spring.eventbridge;
+package org.amv.vertx.spring.eventbusbridge;
 
 import io.vertx.core.Future;
 import io.vertx.rxjava.core.AbstractVerticle;

@@ -4,4 +4,4 @@ org.amv.vertx.spring.VertxAutoConfig,\
 org.amv.vertx.spring.health.VertxHealthCheckAutoConfig,\
 org.amv.vertx.spring.metrics.VertxMetricsAutoConfig,\
 org.amv.vertx.spring.mqtt.VertxMqttServerAutoConfig,\
-org.amv.vertx.spring.eventbridge.EventBusBridgeAutoConfig
+org.amv.vertx.spring.eventbusbridge.EventBusBridgeAutoConfig
