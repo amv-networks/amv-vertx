@@ -2,8 +2,8 @@ import io.franzbecker.gradle.lombok.task.DelombokTask
 
 buildscript {
     ext {
-        vertxVersion = '3.5.0.Beta1'
-        jacksonVersion = '2.8.9'
+        vertxVersion = '3.5.0'
+        jacksonVersion = '2.8.10'
     }
     repositories {
         jcenter()
