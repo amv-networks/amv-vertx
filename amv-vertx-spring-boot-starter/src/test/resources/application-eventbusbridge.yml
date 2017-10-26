@@ -13,3 +13,10 @@ logging.level.org.springframework: WARN
 vertx:
   worker-pool-size: 42
   internal-blocking-pool-size: 1337
+
+vertx.eventbus.bridge:
+  enabled: true
+  port: 0
+  routePrefix: 'eventbus'
+  incomingEventPrefix: 'bridge:in:'
+  outgoingEventPrefix: 'bridge:out:'

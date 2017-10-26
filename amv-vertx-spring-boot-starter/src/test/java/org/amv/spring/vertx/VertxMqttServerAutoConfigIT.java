@@ -22,6 +22,8 @@ import static org.hamcrest.Matchers.notNullValue;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {
         VertxMqttServerAutoConfigIT.TestApplictaion.class
+}, properties = {
+        "spring.profiles.active=mqtt"
 })
 public class VertxMqttServerAutoConfigIT {
     @SpringBootApplication
@@ -47,7 +49,7 @@ public class VertxMqttServerAutoConfigIT {
         final MqttServer bean = applicationContext.getBean(MqttServer.class);
         assertThat(bean, is(notNullValue()));
     }
-    
+
     @Test
     public void hasMqttPropertiesBean() {
         final VertxMqttProperties bean = applicationContext.getBean(VertxMqttProperties.class);

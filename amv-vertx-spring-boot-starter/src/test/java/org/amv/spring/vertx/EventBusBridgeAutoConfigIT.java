@@ -20,6 +20,8 @@ import static org.hamcrest.Matchers.notNullValue;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {
         EventBusBridgeAutoConfigIT.TestApplictaion.class
+}, properties = {
+        "spring.profiles.active=eventbusbridge"
 })
 public class EventBusBridgeAutoConfigIT {
     @SpringBootApplication

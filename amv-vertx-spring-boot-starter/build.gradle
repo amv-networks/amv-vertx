@@ -22,4 +22,6 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter:${springBootVersion}") {
         exclude module: 'spring-boot-starter-logging'
     }
+    
+    testCompile "io.vertx:vertx-mqtt:${vertxVersion}"
 }
