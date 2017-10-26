@@ -21,15 +21,17 @@ import static java.util.Objects.requireNonNull;
 public class EventBusBridgeAutoConfig {
 
     private final Vertx vertx;
+    private final EventBusBridgeProperties eventBusBridgeProperties;
 
     @Autowired
-    public EventBusBridgeAutoConfig(Vertx vertx) {
+    public EventBusBridgeAutoConfig(Vertx vertx, EventBusBridgeProperties eventBusBridgeProperties) {
         this.vertx = requireNonNull(vertx);
+        this.eventBusBridgeProperties = requireNonNull(eventBusBridgeProperties);
     }
 
     @Bean
     public EventBusBridgeVerticle eventBusBridgeVerticle() {
-        return new EventBusBridgeVerticle(sockJSHandler());
+        return new EventBusBridgeVerticle(eventBusBridgeProperties, sockJSHandler());
     }
 
     @Bean

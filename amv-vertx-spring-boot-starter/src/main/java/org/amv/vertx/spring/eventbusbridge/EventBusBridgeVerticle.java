@@ -11,16 +11,18 @@ import static java.util.Objects.requireNonNull;
 @Slf4j
 public class EventBusBridgeVerticle extends AbstractVerticle {
 
+    private final EventBusBridgeProperties eventBusBridgeProperties;
     private final SockJSHandler sockJSHandler;
 
-    public EventBusBridgeVerticle(SockJSHandler sockJSHandler) {
+    public EventBusBridgeVerticle(EventBusBridgeProperties eventBusBridgeProperties, SockJSHandler sockJSHandler) {
+        this.eventBusBridgeProperties = requireNonNull(eventBusBridgeProperties);
         this.sockJSHandler = requireNonNull(sockJSHandler);
     }
 
     @Override
     public void start(Future<Void> startFuture) throws Exception {
         String name = this.getClass().getSimpleName();
-        int port = 8080;
+        int port = eventBusBridgeProperties.getPort();
 
         log.info("Starting {} on port {}...", name, port);
 

@@ -12,6 +12,7 @@ import java.util.List;
 public class EventBusBridgeProperties {
 
     private boolean enabled;
+    private int port = 8080;
 
     private List<String> allowedEvents = Collections.emptyList();
 }
