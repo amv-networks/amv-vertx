@@ -65,12 +65,6 @@ public class VertxAutoConfig extends AbstractVertxAutoConfig {
         return vertx.sharedData();
     }
 
-    @ConditionalOnMissingBean(HealthChecks.class)
-    @Bean
-    public HealthChecks healthChecks(Vertx vertx) {
-        return HealthChecks.create(vertx);
-    }
-
     @ConditionalOnMissingBean(VertxStartStopService.class)
     @Bean
     public VertxStartStopService vertxStartStopService(Vertx vertx,
