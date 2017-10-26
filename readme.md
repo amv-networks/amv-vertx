@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/amvnetworks/amv-vertx.svg?branch=master)](https://travis-ci.org/amvnetworks/amv-vertx)
+[![Build Status](https://travis-ci.org/amv-networks/amv-vertx.svg?branch=master)](https://travis-ci.org/amv-networks/amv-vertx)
+[![License](https://img.shields.io/github/license/amv-networks/amv-vertx.svg?maxAge=2592000)](https://github.com/amv-networks/amv-vertx/blob/master/LICENSE)
+
 
 amv-vertx
 ========
