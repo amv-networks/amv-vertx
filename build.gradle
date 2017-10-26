@@ -5,7 +5,7 @@ buildscript {
         vertxVersion = '3.5.0'
         jacksonVersion = '2.8.10'
         reactorVersion = '3.1.0.RELEASE'
-        springBootVersion = '2.0.0.M2'
+        springBootVersion = '1.5.8.RELEASE'
     }
     repositories {
         jcenter()
@@ -100,7 +100,7 @@ subprojects {
         testCompile "io.projectreactor:reactor-test:${reactorVersion}"
 
         testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
-        testCompile("org.springframework.boot:spring-boot-starter-webflux:${springBootVersion}")
+        testCompile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
     }
 
     lombok {
