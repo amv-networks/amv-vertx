@@ -12,3 +12,6 @@ amv-vertx
 ```
 ./gradlew clean build -Pminimal -Prelease.stage=SNAPSHOT -Prelease.scope=patch publishToMavenLocal
 ```
+
+# license
+The project is licensed under the Apache License. See [LICENSE](LICENSE) for details.
