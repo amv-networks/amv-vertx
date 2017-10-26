@@ -41,6 +41,7 @@ public class VertxMqttProperties {
     private boolean reuseAddress = DEFAULT_REUSE_ADDRESS;
     private boolean logActivity = DEFAULT_LOG_ENABLED;
 
+    private boolean enabled;
     private int port = DEFAULT_PORT;
     private String host = DEFAULT_HOST;
     private int acceptBacklog = DEFAULT_ACCEPT_BACKLOG;
