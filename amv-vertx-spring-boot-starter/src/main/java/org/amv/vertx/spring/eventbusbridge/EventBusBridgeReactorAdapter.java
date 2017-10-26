@@ -15,16 +15,18 @@ import static java.util.Objects.requireNonNull;
 
 public class EventBusBridgeReactorAdapter<E> {
     private final Vertx vertx;
+    private final EventBusBridgeEvents eventBusBridgeEvents;
 
-    public EventBusBridgeReactorAdapter(Vertx vertx) {
+    public EventBusBridgeReactorAdapter(Vertx vertx, EventBusBridgeEvents eventBusBridgeEvents) {
         this.vertx = requireNonNull(vertx);
+        this.eventBusBridgeEvents = requireNonNull(eventBusBridgeEvents);
     }
 
     public <T extends E> void publish(Class<T> clazz, Publisher<T> publisher) {
         requireNonNull(clazz);
         requireNonNull(publisher);
 
-        String eventName = EventBusBridgeEvents.toOutgoingEventName(clazz.getName());
+        String eventName = eventBusBridgeEvents.toOutgoingEventName(clazz.getName());
 
         ReactiveReadStream<Object> rrs = ReactiveReadStream.readStream();
 
@@ -44,7 +46,7 @@ public class EventBusBridgeReactorAdapter<E> {
         requireNonNull(clazz);
         requireNonNull(subscriber);
 
-        String eventName = EventBusBridgeEvents.toIncomingEventName(clazz.getName());
+        String eventName = eventBusBridgeEvents.toIncomingEventName(clazz.getName());
 
         final MessageConsumer<String> consumer = vertx.eventBus().consumer(eventName);
 

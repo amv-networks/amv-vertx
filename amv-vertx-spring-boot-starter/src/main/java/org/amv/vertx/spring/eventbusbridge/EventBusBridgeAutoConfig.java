@@ -35,16 +35,28 @@ public class EventBusBridgeAutoConfig {
     }
 
     @Bean
+    public EventBusBridgeEvents eventBusBridgeEvents() {
+        String incomingEventPrefix = eventBusBridgeProperties.getIncomingEventPrefix().orElse("");
+        String outgoingEventPrefix = eventBusBridgeProperties.getOutgoingEventPrefix().orElse("");
+
+        return new EventBusBridgeEvents(incomingEventPrefix, outgoingEventPrefix);
+    }
+
+    @Bean
     public SockJSHandler sockJSHandler() {
+        EventBusBridgeEvents eventBusBridgeEvents = eventBusBridgeEvents();
+
         SockJSHandler sockJSHandler = SockJSHandler.create(vertx);
 
         BridgeOptions options = new BridgeOptions()
-                .addInboundPermitted(new PermittedOptions().setAddressRegex(EventBusBridgeEvents.toIncomingEventName(".*")))
-                .addOutboundPermitted(new PermittedOptions().setAddressRegex(EventBusBridgeEvents.toOutgoingEventName(".*")));
+                .addInboundPermitted(new PermittedOptions().setAddressRegex(eventBusBridgeEvents.toIncomingEventName(".*")))
+                .addOutboundPermitted(new PermittedOptions().setAddressRegex(eventBusBridgeEvents.toOutgoingEventName(".*")));
 
         sockJSHandler.bridge(options, event -> {
             if (event.type() == BridgeEventType.SOCKET_CREATED) {
-                log.info("Socket connection created {}", event.socket().remoteAddress().host());
+                if (log.isDebugEnabled()) {
+                    log.debug("Socket connection created {}", event.socket().remoteAddress().host());
+                }
             }
             event.complete(true);
         });

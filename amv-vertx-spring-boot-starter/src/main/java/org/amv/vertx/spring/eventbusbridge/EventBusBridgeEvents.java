@@ -3,16 +3,23 @@ package org.amv.vertx.spring.eventbusbridge;
 import static java.util.Objects.requireNonNull;
 
 public class EventBusBridgeEvents {
-    private static String INCOMING_EVENT_NAME_PREFIX = "bridge:in:";
-    private static String OUTGOING_EVENT_NAME_PREFIX = "bridge:out:";
+    private String incomingEventPrefix;
+    private String outgoingEventPrefix;
 
-    public static String toIncomingEventName(String eventName) {
-        requireNonNull(eventName);
-        return INCOMING_EVENT_NAME_PREFIX + eventName;
+    public EventBusBridgeEvents(String incomingEventPrefix, String outgoingEventPrefix) {
+        this.incomingEventPrefix = requireNonNull(incomingEventPrefix);
+        this.outgoingEventPrefix = requireNonNull(outgoingEventPrefix);
     }
 
-    public static String toOutgoingEventName(String eventName) {
+    public String toIncomingEventName(String eventName) {
         requireNonNull(eventName);
-        return OUTGOING_EVENT_NAME_PREFIX + eventName;
+
+        return incomingEventPrefix + eventName;
+    }
+
+    public String toOutgoingEventName(String eventName) {
+        requireNonNull(eventName);
+
+        return outgoingEventPrefix + eventName;
     }
 }
