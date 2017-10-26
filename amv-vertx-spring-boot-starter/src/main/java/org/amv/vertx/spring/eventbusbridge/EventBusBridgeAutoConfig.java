@@ -17,7 +17,7 @@ import static java.util.Objects.requireNonNull;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(EventBusBridgeProperties.class)
-@ConditionalOnProperty("amv.trafficsoft.datahub.eventbus.bridge.enabled")
+@ConditionalOnProperty(value = "vertx.eventbus.bridge.enabled", havingValue = "true")
 public class EventBusBridgeAutoConfig {
 
     private final Vertx vertx;

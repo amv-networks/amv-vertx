@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Data
-@ConfigurationProperties("amv.trafficsoft.datahub.eventbus.bridge")
+@ConfigurationProperties("vertx.eventbus.bridge")
 public class EventBusBridgeProperties {
     private boolean enabled;
     private int port = 8080;

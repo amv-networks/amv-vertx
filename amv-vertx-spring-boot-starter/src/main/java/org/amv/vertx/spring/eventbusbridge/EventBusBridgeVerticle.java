@@ -25,7 +25,7 @@ public class EventBusBridgeVerticle extends AbstractVerticle {
         int port = eventBusBridgeProperties.getPort();
         String routeRegex = eventBusBridgeProperties.getRoutePrefix()
                 .map(val -> String.format("/%s/*", val))
-                .orElseGet(() -> "/*");
+                .orElse("/*");
 
         log.info("Starting {} on port {} with route {}...", name, port, routeRegex);
 
