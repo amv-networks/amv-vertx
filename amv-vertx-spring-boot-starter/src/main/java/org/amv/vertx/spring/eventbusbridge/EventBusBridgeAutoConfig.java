@@ -1,8 +1,8 @@
 package org.amv.vertx.spring.eventbusbridge;
 
 import io.vertx.ext.bridge.BridgeEventType;
+import io.vertx.ext.bridge.PermittedOptions;
 import io.vertx.ext.web.handler.sockjs.BridgeOptions;
-import io.vertx.ext.web.handler.sockjs.PermittedOptions;
 import io.vertx.rxjava.core.Vertx;
 import io.vertx.rxjava.ext.web.handler.sockjs.SockJSHandler;
 import lombok.extern.slf4j.Slf4j;
