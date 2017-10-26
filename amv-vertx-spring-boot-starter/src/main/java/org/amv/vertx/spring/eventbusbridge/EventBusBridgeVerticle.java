@@ -23,11 +23,14 @@ public class EventBusBridgeVerticle extends AbstractVerticle {
     public void start(Future<Void> startFuture) throws Exception {
         String name = this.getClass().getSimpleName();
         int port = eventBusBridgeProperties.getPort();
+        String routeRegex = eventBusBridgeProperties.getRoutePrefix()
+                .map(val -> String.format("/%s/*", val))
+                .orElseGet(() -> "/*");
 
-        log.info("Starting {} on port {}...", name, port);
+        log.info("Starting {} on port {} with route {}...", name, port, routeRegex);
 
         Router router = Router.router(vertx);
-        router.route("/eventbus/*").handler(sockJSHandler);
+        router.route(routeRegex).handler(sockJSHandler);
 
         vertx.createHttpServer()
                 .requestHandler(router::accept)
