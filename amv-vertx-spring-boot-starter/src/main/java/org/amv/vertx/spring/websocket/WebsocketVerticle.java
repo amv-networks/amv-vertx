@@ -1,16 +1,15 @@
 package org.amv.vertx.spring.websocket;
 
 import com.google.common.collect.ImmutableList;
-import io.vertx.core.Handler;
 import io.vertx.rxjava.core.AbstractVerticle;
 import io.vertx.rxjava.core.http.HttpServer;
 import io.vertx.rxjava.core.http.ServerWebSocket;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Objects.requireNonNull;
-import static java.util.stream.Collectors.toList;
 
 @Slf4j
 public class WebsocketVerticle extends AbstractVerticle {
@@ -26,24 +25,28 @@ public class WebsocketVerticle extends AbstractVerticle {
     @Override
     public void start() {
         HttpServer httpServer = vertx.createHttpServer()
-                .websocketHandler(webSocketHandler())
+                .websocketHandler(this::handle)
                 .listen(websocketProperties.getPort());
 
         log.info("Websocket server started on port {}", httpServer.actualPort());
     }
 
-    private Handler<ServerWebSocket> webSocketHandler() {
-        return ws -> {
-            List<WebsocketHandler> handlers = websocketHandlers.stream()
-                    .filter(handler -> handler.supports(ws))
-                    .collect(toList());
+    private void handle(ServerWebSocket ws) {
+        Optional<WebsocketHandler> handler = findEligibleHandler(ws);
 
-            if (handlers.isEmpty()) {
-                ws.reject(404);
-                return;
-            }
+        if (!handler.isPresent()) {
+            ws.reject(404);
+            return;
+        }
 
-            handlers.forEach(handler -> handler.handle(ws));
-        };
+        ws.accept();
+
+        handler.get().handle(ws);
+    }
+
+    private Optional<WebsocketHandler> findEligibleHandler(ServerWebSocket ws) {
+        return websocketHandlers.stream()
+                .filter(handler -> handler.supports(ws))
+                .findFirst();
     }
 }
