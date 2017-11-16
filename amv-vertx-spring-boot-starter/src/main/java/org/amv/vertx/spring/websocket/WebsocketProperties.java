@@ -1,14 +1,15 @@
 package org.amv.vertx.spring.websocket;
 
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.util.SocketUtils;
 
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static java.util.Objects.isNull;
 
+@Data
 @ConfigurationProperties("vertx.websocket")
 public class WebsocketProperties {
     private static final AtomicReference<Integer> internalPort = new AtomicReference<>();

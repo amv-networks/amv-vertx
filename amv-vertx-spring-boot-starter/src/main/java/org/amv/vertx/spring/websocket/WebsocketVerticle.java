@@ -3,13 +3,14 @@ package org.amv.vertx.spring.websocket;
 import com.google.common.collect.ImmutableList;
 import io.vertx.core.Handler;
 import io.vertx.rxjava.core.AbstractVerticle;
+import io.vertx.rxjava.core.http.HttpServer;
 import io.vertx.rxjava.core.http.ServerWebSocket;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.Objects.requireNonNull;
+import static java.util.stream.Collectors.toList;
 
 @Slf4j
 public class WebsocketVerticle extends AbstractVerticle {
@@ -24,19 +25,22 @@ public class WebsocketVerticle extends AbstractVerticle {
 
     @Override
     public void start() {
-        vertx.createHttpServer()
+        HttpServer httpServer = vertx.createHttpServer()
                 .websocketHandler(webSocketHandler())
                 .listen(websocketProperties.getPort());
+
+        log.info("Websocket server started on port {}", httpServer.actualPort());
     }
 
     private Handler<ServerWebSocket> webSocketHandler() {
         return ws -> {
-            final List<WebsocketHandler> handlers = websocketHandlers.stream()
+            List<WebsocketHandler> handlers = websocketHandlers.stream()
                     .filter(handler -> handler.supports(ws))
-                    .collect(Collectors.toList());
+                    .collect(toList());
 
             if (handlers.isEmpty()) {
                 ws.reject(404);
+                return;
             }
 
             handlers.forEach(handler -> handler.handle(ws));
